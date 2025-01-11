@@ -3,7 +3,7 @@ import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBMaFTr2teuhSxL-Quhx2YCUSQki0jbMZs",
+  apiKey: "YOUR API",
   authDomain: "fitmate-2a2a4.firebaseapp.com",
   projectId: "fitmate-2a2a4",
   storageBucket: "fitmate-2a2a4.firebasestorage.app",
