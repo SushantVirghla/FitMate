@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
-    marginBottom: 20, // Add spacing between muscle groups
+    marginBottom: 20, 
   },
 
   muscleImage: {
