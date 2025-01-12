@@ -3,7 +3,7 @@ import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
 //Go to google firebase select web app it will give you firebase.js for your project, copy your constfirebaseConfig={}
-//from there are paste your project here in api,projectID,etc. 
+//from there are paste your project here in api,projectID,etc. dont change imports and export function.
 
 const firebaseConfig = {
   apiKey: "YOUR API",
