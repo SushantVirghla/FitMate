@@ -19,7 +19,6 @@ working perfectly but very cluttered and unorganized.
    Download from: https://nodejs.org/
 
 2. Install Expo CLI globally:
-   ```bash
   npm install -g expo-cli
 
 3. Install all dependencies:
