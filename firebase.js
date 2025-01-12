@@ -2,14 +2,17 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
+//Go to google firebase select web app it will give you firebase.js for your project, copy your constfirebaseConfig={}
+//from there are paste your project here in api,projectID,etc. 
+
 const firebaseConfig = {
   apiKey: "YOUR API",
-  authDomain: "fitmate-2a2a4.firebaseapp.com",
-  projectId: "fitmate-2a2a4",
-  storageBucket: "fitmate-2a2a4.firebasestorage.app",
-  messagingSenderId: "127441946657",
-  appId: "1:127441946657:web:4b4a2be0004ba2309cfb60",
-  measurementId: "G-YWMVCJJ6JD"
+  authDomain: "COM.XYZ",
+  projectId: "XYZ",
+  storageBucket: "XYZ",
+  messagingSenderId: "XYZ",
+  appId: "XYZ",
+  measurementId: "XYZ"
 };
 
 // Initialize Firebase
