@@ -61,7 +61,7 @@ export default function TrainingLog({ route, navigation }) {
       let q;
 
       if (selectedDate) {
-        // Create date range for the selected date (start to end of day)
+       
         const startDate = new Date(selectedDate);
         startDate.setHours(0, 0, 0, 0);
         const endDate = new Date(selectedDate);
@@ -75,7 +75,7 @@ export default function TrainingLog({ route, navigation }) {
           orderBy('timestamp', 'desc')
         );
       } else {
-        // Query for specific muscle group instead of exercise name
+        
         q = query(
           exercisesRef,
           where('userId', '==', currentUser.uid),
