@@ -23,12 +23,10 @@ export default function App() {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setLoading(false);
       if (user) {
-        // User is signed in
         navigation.navigate('Dashboard');
       }
     });
 
-    // Cleanup subscription on unmount
     return unsubscribe;
   }, []);
 
