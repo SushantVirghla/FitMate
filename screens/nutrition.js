@@ -21,7 +21,7 @@ import {
   getDocs
 } from 'firebase/firestore';
 
-const API_KEY = 'jfbhCNW7HHK6WfKXapOd4kUMpaAXP9gNPpVPZdwF';
+const API_KEY = 'GO_TO_USDA_NUTRITION_GET_YOUR_API';
 const USDA_API_URL = 'https://api.nal.usda.gov/fdc/v1';
 
 const Nutrition = () => {
@@ -38,12 +38,10 @@ const Nutrition = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
 
-  // Load data on startup and when date changes
   useEffect(() => {
     loadDailyLog();
   }, [selectedDate]);
 
-  // Firebase operations
   const loadDailyLog = async () => {
     if (!auth.currentUser) {
       Alert.alert('Error', 'Please log in to track nutrition');
@@ -92,7 +90,6 @@ const Nutrition = () => {
     }
   };
 
-  // Load historical data
   const loadHistoricalData = async (days = 7) => {
     if (!auth.currentUser) return;
 
@@ -122,13 +119,12 @@ const Nutrition = () => {
     }
   };
 
-  // Transform USDA nutrient data
+
   const getNutrientValue = (nutrients, nutrientId) => {
     const nutrient = nutrients.find(n => n.nutrientId === nutrientId);
     return nutrient ? nutrient.value : 0;
   };
 
-  // Search foods from USDA API with debouncing
   let searchTimeout = null;
   const searchFood = (query) => {
     setSearchQuery(query);
@@ -183,7 +179,6 @@ const Nutrition = () => {
     }, 500);
   };
 
-  // Add food to daily log
   const addFood = async (food) => {
     if (!auth.currentUser) {
       Alert.alert('Error', 'Please log in to track nutrition');
@@ -219,21 +214,18 @@ const Nutrition = () => {
     setSearchResults([]);
   };
 
-  // Remove food from log
   const removeFood = async (id) => {
     const newLog = dailyLog.filter(item => item.id !== id);
     setDailyLog(newLog);
     await saveDailyLog(newLog);
   };
 
-  // Date selection
   const changeDate = (daysToAdd) => {
     const newDate = new Date(selectedDate);
     newDate.setDate(newDate.getDate() + daysToAdd);
     setSelectedDate(newDate.toISOString().split('T')[0]);
   };
 
-  // Calculate total nutrition
   useEffect(() => {
     const totals = dailyLog.reduce((acc, item) => ({
       calories: acc.calories + item.calories,
@@ -300,7 +292,6 @@ const Nutrition = () => {
       
       <DateNavigation />
 
-      {/* Search Section */}
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.input}
@@ -317,12 +308,11 @@ const Nutrition = () => {
         />
       </View>
 
-      {/* Loading Indicator */}
+      
       {isLoading && (
         <ActivityIndicator size="large" color="#0000ff" style={styles.loader} />
       )}
 
-      {/* Search Results */}
       {searchResults.length > 0 && (
         <FlatList
           data={searchResults}
@@ -331,8 +321,7 @@ const Nutrition = () => {
           renderItem={renderSearchItem}
         />
       )}
-
-      {/* Daily Log */}
+  
       <Text style={styles.sectionTitle}>Food Log for {selectedDate}</Text>
       <FlatList
         data={dailyLog}
@@ -341,7 +330,6 @@ const Nutrition = () => {
         renderItem={renderLogItem}
       />
 
-      {/* Daily Totals */}
       <View style={styles.totalsContainer}>
         <Text style={styles.totalsTitle}>Daily Totals</Text>
         <Text>Calories: {totalNutrition.calories.toFixed(1)}</Text>
