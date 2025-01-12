@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { format } from 'date-fns'; // Import format function from date-fns
+import { format } from 'date-fns'; 
 
 const TopBar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -13,7 +13,7 @@ const TopBar = () => {
     setSelectedDate(date); 
   };
 
-  const formattedDate = format(selectedDate, 'dd/MM/yyyy'); // Format date as "DD/MM/YYYY"
+  const formattedDate = format(selectedDate, 'dd/MM/yyyy'); 
 
   return (
     <View style={styles.topbar}>
