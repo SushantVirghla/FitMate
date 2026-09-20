@@ -31,6 +31,11 @@ const AppContainer = () => {
           component={App} 
           options={{ headerShown: false }} 
         />
+        <Stack.Screen 
+          name="Login" 
+          component={App} 
+          options={{ headerShown: false }} 
+        />
         <Stack.Screen name="Signup" component={Signup} />
         <Stack.Screen name="Dashboard" component={mainscreen} />
         <Stack.Screen name="Selection" component={Parts} />

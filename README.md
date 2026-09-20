@@ -18,21 +18,26 @@ working perfectly but very cluttered and unorganized.
    Make sure you have Node.js version 18 or newer installed on your computer.
    Download from: https://nodejs.org/
 
-2. Install Expo CLI globally:
-  npm install -g expo-cli
-
-3. Install all dependencies:
+2. Install dependencies:
    npm install
 
-4.install Expo Go app on your phone android/IOS
-  or you can setup simulator in your device in case you dont want to use your phone, i used simulator in my macbook 
- and setup of simulator is complicated, i suggest download Expo Go app in your phone.
+3. Create a Firebase app and configure the app with environment variables.
+   Copy `.env.example` to `.env` and fill in your Firebase values:
+   - `EXPO_PUBLIC_FIREBASE_API_KEY`
+   - `EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN`
+   - `EXPO_PUBLIC_FIREBASE_PROJECT_ID`
+   - `EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET`
+   - `EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
+   - `EXPO_PUBLIC_FIREBASE_APP_ID`
+   - `EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID`
 
-5.Start the project : npx expo start --tunnel.
-  if you setup simulator you will button you need to press respective platform in simulator IOS/Android.
-  if you are using Expo Go its simple after executing command open Expo Go app in phone and scan QR which is in your 
-  terminal. Can be accessed from different network also.
+4. Install Expo Go app on your phone (Android/iOS)
+   or set up a simulator if preferred.
 
-6.as project include many dependencies so while running if you face any error of missing dependencies just copy error 
- and past in CHatGPT,CLaudeAI,etc it will give you command required to install the dependencies.I cant list all 
- dependencies command here there are so many.
+5. Start the project:
+   npx expo start --tunnel
+
+6. If you are using Expo Go, scan the QR code shown in the terminal.
+   If you are using a simulator, choose the correct platform in the Metro UI.
+
+This project now includes a safe Firebase configuration check so it won't crash if the config is missing or left as placeholder values.

@@ -1,22 +1,27 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
-//Go to google firebase select web app it will give you firebase.js for your project, copy your constfirebaseConfig={}
-//from there are paste your project here in api,projectID,etc. dont change imports and export function.
-
 const firebaseConfig = {
-  apiKey: "YOUR API",
-  authDomain: "COM.XYZ",
-  projectId: "XYZ",
-  storageBucket: "XYZ",
-  messagingSenderId: "XYZ",
-  appId: "XYZ",
-  measurementId: "XYZ"
+  apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY ?? '',
+  authDomain: process.env.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN ?? '',
+  projectId: process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID ?? '',
+  storageBucket: process.env.EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET ?? '',
+  messagingSenderId: process.env.EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID ?? '',
+  appId: process.env.EXPO_PUBLIC_FIREBASE_APP_ID ?? '',
+  measurementId: process.env.EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID ?? '',
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-export const db = getFirestore(app);
+export const isFirebaseConfigured = Object.values(firebaseConfig).every(
+  (value) => typeof value === 'string' && value.trim().length > 0 && !value.includes('YOUR') && !value.includes('XYZ')
+);
+
+const app = isFirebaseConfigured ? (getApps().length ? getApp() : initializeApp(firebaseConfig)) : null;
+export const auth = app ? getAuth(app) : null;
+export const db = app ? getFirestore(app) : null;
+
+if (!isFirebaseConfigured) {
+  console.warn('Firebase is not configured. Set EXPO_PUBLIC_FIREBASE_* values in your environment to enable auth and storage.');
+}
+
 export default app;
