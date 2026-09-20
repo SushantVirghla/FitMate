@@ -2,7 +2,9 @@ App name - FitMate
 description - Workout Tracker and Nutrition Tracker
 Tech stack - React Native Expo and Google Firebase
 
-# apk download link :- https://drive.google.com/file/d/1SOOgFdwd23LjK0xVcipSXgA73UsW9tS6/view?usp=sharing
+# apk download link
+
+https://drive.google.com/file/d/1SOOgFdwd23LjK0xVcipSXgA73UsW9tS6/view?usp=sharing
 
 
 https://www.linkedin.com/in/sushant-virghla-b74435329/
