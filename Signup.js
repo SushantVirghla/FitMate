@@ -13,6 +13,22 @@ export default function Signup() {
   const [loading, setLoading] = useState(false);
 
   const handleSignup = () => {
+    if (!auth) {
+      Alert.alert('Firebase setup required', 'Add your Firebase config to the EXPO_PUBLIC_FIREBASE_* values before creating an account.');
+      return;
+    }
+
+    if (!email || !password || !confirmPassword) {
+      Alert.alert('Missing details', 'Please complete all fields before signing up.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      Alert.alert('Passwords do not match', 'Please make sure both passwords match.');
+      return;
+    }
+
+    setLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -22,6 +38,9 @@ export default function Signup() {
       .catch((error) => {
         console.log('Registration error:', error);
         Alert.alert('Registration Error', error.message);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -48,8 +67,17 @@ export default function Signup() {
         secureTextEntry
       />
 
-      <TouchableOpacity style={styles.button} onPress={handleSignup}>
-        <Text style={styles.buttonText}>Sign Up</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Confirm Password"
+        placeholderTextColor="#aaa"
+        value={confirmPassword}
+        onChangeText={setConfirmPassword}
+        secureTextEntry
+      />
+
+      <TouchableOpacity style={styles.button} onPress={handleSignup} disabled={loading}>
+        <Text style={styles.buttonText}>{loading ? 'Creating account...' : 'Sign Up'}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity 

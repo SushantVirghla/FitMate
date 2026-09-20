@@ -20,6 +20,11 @@ export default function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!auth) {
+      setLoading(false);
+      return undefined;
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setLoading(false);
       if (user) {
@@ -28,9 +33,19 @@ export default function App() {
     });
 
     return unsubscribe;
-  }, []);
+  }, [navigation]);
 
   const handleLogin = () => {
+    if (!auth) {
+      Alert.alert('Firebase setup required', 'Add your Firebase config to the EXPO_PUBLIC_FIREBASE_* values before logging in.');
+      return;
+    }
+
+    if (!email || !password) {
+      Alert.alert('Missing details', 'Please enter both email and password.');
+      return;
+    }
+
     setLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
