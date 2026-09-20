@@ -36,15 +36,12 @@
       "expo-asset",
       "expo-status-bar"
     ],
+    "runtimeVersion": "1.0.0",
+    "owner": "sushantvirghla",
     "extra": {
       "eas": {
-        "projectId": "3e648e10-0607-4a87-b4d6-67aaafd6263f"
+        "projectId": "593a2880-b560-4a27-8422-cca80eaeaa81"
       }
-    },
-    "runtimeVersion": "1.0.0",
-    "updates": {
-      "url": "https://u.expo.dev/3e648e10-0607-4a87-b4d6-67aaafd6263f"
-    },
-    "owner": "sushantvirghla"
+    }
   }
 }
